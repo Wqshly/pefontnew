@@ -138,7 +138,7 @@ export default {
   data () {
     return {
       isActive: 'activity',
-      leftHeaderList: [
+      headerList: [
         {
           imgPath: true,
           index: '/',

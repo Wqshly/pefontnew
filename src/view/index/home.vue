@@ -17,7 +17,7 @@
           <li v-for="(item,index) in descriptionPicList" :key="index">
             <a href="https://www.tencent.com/zh-cn/about.html#about-con-1">
               <p>{{item.name}}</p>
-              <img v-lazy="require('../../assets/img/index/sport/' + item.imgPath)"/>
+              <img v-lazy="require('../../assets/img/index/description/' + item.imgPath)"/>
             </a>
           </li>
         </ul>
@@ -99,15 +99,15 @@ export default {
       descriptionPicList: [
         {
           name: '公司简介',
-          imgPath: 'sailboat.jpg'
+          imgPath: 'company.png'
         },
         {
           name: '企业文化',
-          imgPath: 'tableTennis.jpg'
+          imgPath: 'culture.png'
         },
         {
           name: '办公地点',
-          imgPath: 'yumao.jpg'
+          imgPath: 'address.png'
         }
       ]
     }
