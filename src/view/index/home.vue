@@ -17,7 +17,7 @@
           <li v-for="(item,index) in descriptionPicList" :key="index">
             <a href="https://www.tencent.com/zh-cn/about.html#about-con-1">
               <p>{{item.name}}</p>
-              <img v-lazy="require('../../assets/img/index/sport/' + item.path)"/>
+              <img v-lazy="require('../../assets/img/index/sport/' + item.imgPath)"/>
             </a>
           </li>
         </ul>
@@ -29,16 +29,16 @@
     <div class="detail-area">
       <h1>多元运动，畅享生活</h1>
       <div class="detail-container">
-<!--        <template v-for="(item,index) in ">-->
-<!--        </template>-->
-        <ul class="detail-list">
-          <li v-for="(item,index) in picList" :key="index">
-            <a href="https://www.tencent.com/zh-cn/about.html#about-con-1">
-              <p>{{item.name}}</p>
-              <img v-lazy="require('../../assets/img/index/sport/' + item.path)"/>
-            </a>
-          </li>
-        </ul>
+        <template v-for="(items,index) in detailPicList">
+          <ul class="detail-list" :key="index">
+            <li v-for="(item,index) in items" :key="index">
+              <a href="https://www.tencent.com/zh-cn/about.html#about-con-1">
+                <p>{{item.name}}</p>
+                <img v-lazy="require('../../assets/img/index/sport/' + item.imgPath)"/>
+              </a>
+            </li>
+          </ul>
+        </template>
       </div>
     </div>
     <div class="link-area"></div>
@@ -52,32 +52,62 @@ export default {
   name: 'home',
   data () {
     return {
+      detailPicList: [
+        [
+          {
+            name: '帆船',
+            imgPath: 'sailboat.jpg'
+          },
+          {
+            name: '骑行',
+            imgPath: 'bicycle.jpg'
+          },
+          {
+            name: '游泳',
+            imgPath: 'swimming.jpg'
+          }
+        ],
+        [
+          {
+            name: '足球',
+            imgPath: 'football.jpg'
+          },
+          {
+            name: '篮球',
+            imgPath: 'basketball.jpg'
+          },
+          {
+            name: '排球',
+            imgPath: 'volleyball.jpg'
+          }
+        ],
+        [
+          {
+            name: '跨栏',
+            imgPath: 'hurdle.jpg'
+          },
+          {
+            name: '乒乓球',
+            imgPath: 'tableTennis.jpg'
+          },
+          {
+            name: '羽毛球',
+            imgPath: 'badminton.jpg'
+          }
+        ]
+      ],
       descriptionPicList: [
         {
           name: '公司简介',
-          path: 'sailboat.jpg'
+          imgPath: 'sailboat.jpg'
         },
         {
           name: '企业文化',
-          path: 'pingpang.jpg'
+          imgPath: 'tableTennis.jpg'
         },
         {
           name: '办公地点',
-          path: 'yumao.jpg'
-        }
-      ],
-      picList: [
-        {
-          name: '帆船',
-          path: 'sailboat.jpg'
-        },
-        {
-          name: '乒乓球',
-          path: 'pingpang.jpg'
-        },
-        {
-          name: '羽毛球',
-          path: 'yumao.jpg'
+          imgPath: 'yumao.jpg'
         }
       ]
     }
@@ -134,6 +164,9 @@ export default {
     }
   }
 
+  @media screen and (min-width: 1921px) {
+  }
+
   @media screen and (min-width: 1441px) and (max-width: 1920px) {
 
     .index-title {
@@ -168,6 +201,11 @@ export default {
     background-color: #f7f7f7;
     text-align: center;
 
+    h1 {
+      padding: 40px 0;
+      font-size: 40px;
+    }
+
     .detail-container {
       display: block;
       width: 1260px;
@@ -179,6 +217,7 @@ export default {
   .detail-list {
     display: block;
     height: 250px;
+    margin-bottom: 40px;
 
     li {
       display: inline-block;
@@ -240,7 +279,7 @@ export default {
 
       a:after {
         display: block;
-        content: "123456789";
+        content: '';
         height: 100%;
         width: 100%;
         background: rgba(0, 82, 217, 0.7);
@@ -274,12 +313,12 @@ export default {
     background-color: #efeff0;
   }
 
-  @media screen and (min-width: 1921px) {
-  }
-
   @media screen and (min-width: 1025px) and (max-width: 1440px) {
   }
 
   @media screen and (min-width: 801px) and (max-width: 1024px) {
+  }
+
+  @media screen and (max-width: 375px) {
   }
 </style>
