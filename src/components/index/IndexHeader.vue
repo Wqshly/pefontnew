@@ -42,10 +42,14 @@ export default {
         },
         {
           index: '/home',
-          title: '更新日志'
+          title: '新闻资讯'
         }
       ],
       rightHeaderList: [
+        {
+          index: '/home',
+          title: '更新日志'
+        },
         {
           index: '/index',
           title: '使用帮助'

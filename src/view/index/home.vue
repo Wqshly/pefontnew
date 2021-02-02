@@ -11,28 +11,13 @@
         <p>{{getTime()}}</p>
       </div>
     </div>
-    <div class="description-area">
-      <div class="description-container">
-        <ul class="detail-list">
-          <li v-for="(item,index) in descriptionPicList" :key="index">
-            <a href="https://www.tencent.com/zh-cn/about.html#about-con-1">
-              <p>{{item.name}}</p>
-              <img v-lazy="require('../../assets/img/index/description/' + item.imgPath)"/>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <h1>PE校园-健康生活每一天</h1>
-      <p>校园PE，由青岛新体创体育产业集团有限公司研发，青岛指尖跃动科技有限公司提供技术支持。</p>
-      <p>校园PE旨在促进学生每天锻炼一小时，用运动时长获取PE体育学分，从而保证学生运动时长，乐享健康生活。</p>
-    </div>
-    <div class="detail-area">
-      <h1>多元运动，畅享生活</h1>
-      <div class="detail-container">
+    <div class="pic-area">
+      <h1>多元运动&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;畅享生活</h1>
+      <div class="pic-container">
         <template v-for="(items,index) in detailPicList">
-          <ul class="detail-list" :key="index">
+          <ul class="pic-list" :key="index">
             <li v-for="(item,index) in items" :key="index">
-              <a href="https://www.tencent.com/zh-cn/about.html#about-con-1">
+              <a href="#">
                 <p>{{item.name}}</p>
                 <img v-lazy="require('../../assets/img/index/sport/' + item.imgPath)"/>
               </a>
@@ -41,7 +26,31 @@
         </template>
       </div>
     </div>
-    <div class="link-area"></div>
+    <div class="description-area">
+      <p class="description-slogan">校园PE，由青岛新体创体育产业集团有限公司研发，青岛指尖跃动科技有限公司提供技术支持。<span class="pc"></span>校园PE旨在促进学生每天锻炼一小时，用运动时长获取PE体育学分，从而保证学生运动时长，乐享健康生活。</p>
+      <div class="description-container">
+        <ul class="description-list">
+          <li v-for="(item,index) in descriptionPicList" :key="index">
+            <a href="#">
+              <p>{{item.name}}</p>
+              <img v-lazy="require('../../assets/img/index/description/' + item.imgPath)"/>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="carousel-area">
+      <div class="carousel-container">
+        <div class="carousel-font">
+          <h3 class="title">校园PE<br/>健康生活每一天<br/>图片需替换掉！！</h3>
+        </div>
+      </div>
+      <el-carousel height="600px" arrow="never">
+        <el-carousel-item v-for="(item,index) in carouselList" :key="index">
+          <img style="width: 100%;z-index: 0;" v-lazy="require('../../assets/img/index/carousel/' + item.imgPath)" />
+        </el-carousel-item>
+      </el-carousel>
+    </div>
   </div>
 </template>
 
@@ -109,6 +118,17 @@ export default {
           name: '办公地点',
           imgPath: 'address.png'
         }
+      ],
+      carouselList: [
+        {
+          imgPath: 'bg1.jpg'
+        },
+        {
+          imgPath: 'bg2.jpg'
+        },
+        {
+          imgPath: 'bg3.jpg'
+        }
       ]
     }
   },
@@ -130,6 +150,7 @@ export default {
     width: 100%;
 
     video {
+      display: block;
       width: 100%;
       height: 100%;
     }
@@ -140,8 +161,7 @@ export default {
       left: 0;
       top: 0;
       right: 0;
-      bottom: -1px;
-      opacity: .7;
+      opacity: .5;
       background: #1C1D21;
     }
   }
@@ -152,7 +172,7 @@ export default {
 
   .description-area {
     width: 100%;
-    background-color: #efeff0;
+    background-color: #f7f7f7;
     text-align: center;
 
     .description-container {
@@ -160,14 +180,24 @@ export default {
       width: 1260px;
       margin: 0 auto;
       height: 250px;
-      padding: 80px 0;
+      padding: 0 0 80px 0;
+    }
+
+    .description-slogan {
+      text-align: center;
+      font-size: 22px;
+      font-style: italic;
+      color: #606563;
+      line-height: 54px;
+      padding: 100px 0 80px 0;
+      font-family: 'siyuan',serif;
+      .pc {
+        display: block;
+      }
     }
   }
 
-  @media screen and (min-width: 1921px) {
-  }
-
-  @media screen and (min-width: 1441px) and (max-width: 1920px) {
+  @media screen and (min-width: 1441px) {
 
     .index-title {
       position: absolute;
@@ -191,22 +221,25 @@ export default {
     }
 
     .description-area {
-      height: 1024px;
+      height: 700px;
     }
   }
 
-  .detail-area {
+  .pic-area {
     width: 100%;
-    height: 1024px;
-    background-color: #f7f7f7;
+    height: 975px;
+    background-color: #efeff0;
     text-align: center;
 
     h1 {
       padding: 40px 0;
       font-size: 40px;
+      color: #606464;
+      font-style: italic;
+      font-family: 'siyuan',serif;
     }
 
-    .detail-container {
+    .pic-container {
       display: block;
       width: 1260px;
       margin: 0 auto;
@@ -214,7 +247,7 @@ export default {
     }
   }
 
-  .detail-list {
+  .description-list {
     display: block;
     height: 250px;
     margin-bottom: 40px;
@@ -307,16 +340,136 @@ export default {
     }
   }
 
-  .link-area {
+  .pic-list {
+    display: block;
+    height: 250px;
+    margin-bottom: 20px;
+
+    li {
+      display: inline-block;
+      float: left;
+      height: 100%;
+      width: 400px;
+      text-align: center;
+      margin: 0 10px;
+      position: relative;
+      overflow: hidden;
+
+      p {
+        display: block;
+        float: left;
+        font-size: 30px;
+        height: 40px;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -20px;
+        z-index: 3;
+        color: #fff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0);
+        transform: translate(-50%, 0);
+        transition: border-bottom 0.3s ease-out;
+        padding-bottom: 5px;
+      }
+
+      p:after {
+        content: '';
+        width: 0;
+        height: 2px;
+        background: #fff;
+        bottom: -2px;
+        left: 0;
+        position: absolute;
+        opacity: 0;
+        -webkit-transition: all 0.2s linear;
+      }
+
+      img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 1;
+        transform: scale(1);
+        transition: transform 0.3s ease-out;
+      }
+
+      a {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+
+      a:after {
+        display: block;
+        content: '';
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 82, 217, 0.7);
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 2;
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+      }
+
+      a:hover {
+        img {
+          transform:scale(1.024);
+        }
+        &:after {
+          opacity: 0.5;
+        }
+        p:after {
+          opacity: 1;
+          left: 0;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .carousel-area {
+    display: block;
     width: 100%;
-    height: 500px;
-    background-color: #efeff0;
+    margin: 0 auto;
+    position: relative;
+
+    .carousel-container {
+      width: 1240px;
+      margin: 0 auto;
+
+      .carousel-font {
+        display: block;
+        width: 450px;
+        position: absolute;
+        left: 6.6%;
+        top: 16%;
+        z-index: 666;
+
+        .title {
+          display: block;
+          color: #2a2e2e;
+          width: 450px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          font-size: 36px;
+          margin-bottom: 20px;
+          font-style: italic;
+        }
+      }
+    }
   }
 
-  @media screen and (min-width: 1025px) and (max-width: 1440px) {
+  @media screen and (min-width: 769px) and (max-width: 1440px) {
   }
 
-  @media screen and (min-width: 801px) and (max-width: 1024px) {
+  @media screen and (min-width: 376px) and (max-width: 768px) {
   }
 
   @media screen and (max-width: 375px) {

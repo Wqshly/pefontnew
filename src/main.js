@@ -19,6 +19,7 @@ import CollapseTransition from 'element-ui/lib/transitions/collapse-transition'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {fas} from '@fortawesome/free-solid-svg-icons'
+import {fab} from '@fortawesome/free-brands-svg-icons'
 
 import BasicTableTemp from '@/components/tableTemplate/BasicTableTemp'
 import MultilevelLinkage from '@/components/areaCheck/MultilevelLinkage'
@@ -28,7 +29,7 @@ Vue.use(VueCropper)
 Vue.use(VueLazyload, {
   preLoad: 1.3,
   error: require('@/assets/img/error.jpg'),
-  loading: require('@/assets/img/loading.gif'),
+  // loading: require('@/assets/img/loading.gif'),
   attempt: 1, // 加载图片数量
   listenEvents: ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend', 'touchmove']
 })
@@ -37,6 +38,7 @@ Vue.use(VueParticles)
 Vue.component('basic-table-temp', BasicTableTemp)
 Vue.component('ElCollapseTransition', CollapseTransition)
 library.add(fas)
+library.add(fab)
 Vue.component('FontAwesomeIcon', FontAwesomeIcon)
 Vue.component('multilevel-linkage', MultilevelLinkage)
 
