@@ -306,10 +306,17 @@ export default {
         position: relative;
       }
 
+      ul li a {
+        font-size: 14px;
+      }
+
       .friendly-link-list, .cooperation-list, .legal-info-list {
         display: block;
         height: 0;
         transition: height 0.3s ease-out;
+        li {
+          margin-left: 50px;
+        }
       }
 
       .title {
