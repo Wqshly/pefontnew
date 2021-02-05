@@ -6,13 +6,13 @@
       </video>
       <div class="mask"></div>
       <div class="index-title">
-        <h1>校园体育,提升健康</h1>
-        <p>每天锻炼一小时，健康工作50年，幸福生活一辈子</p>
+        <h1>校园体育&nbsp;&nbsp;提升健康</h1>
         <p>{{getTime()}}</p>
       </div>
     </div>
     <div class="pic-area">
       <h1>多元运动&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;畅享生活</h1>
+      <p>每天锻炼一小时，健康工作50年，幸福生活一辈子</p>
       <div class="pic-container">
         <template v-for="(items,index) in detailPicList">
           <ul class="pic-list" :key="index">
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="description-area">
-      <p class="description-slogan">校园PE，由青岛新体创体育产业集团有限公司研发，青岛指尖跃动科技有限公司提供技术支持。<span class="pc"></span>校园PE旨在促进学生每天锻炼一小时，用运动时长获取PE体育学分，从而保证学生运动时长，乐享健康生活。</p>
+      <p class="description-slogan">校园PE，由青岛新体创体育产业集团有限公司研发，<span class="mobile"></span>青岛指尖跃动科技有限公司提供技术支持。<span class="pc"></span>校园PE旨在促进学生每天锻炼一小时，用运动时长获取PE体育学分，<span class="mobile"></span>从而保证学生运动时长，乐享健康生活。</p>
       <div class="description-container">
         <ul class="description-list">
           <li v-for="(item,index) in descriptionPicList" :key="index">
@@ -45,7 +45,7 @@
           <h3 class="title">校园PE<br/>健康生活每一天<br/>图片需替换掉！！</h3>
         </div>
       </div>
-      <el-carousel height="600px" arrow="never">
+      <el-carousel :height="carouselHeight + 'px'" arrow="never">
         <el-carousel-item v-for="(item,index) in carouselList" :key="index">
           <img style="width: 100%;z-index: 0;" v-lazy="require('../../assets/img/index/carousel/' + item.imgPath)" />
         </el-carousel-item>
@@ -119,6 +119,7 @@ export default {
           imgPath: 'address.png'
         }
       ],
+      carouselHeight: 600,
       carouselList: [
         {
           imgPath: 'bg1.jpg'
@@ -138,7 +139,14 @@ export default {
       return formatDate(date, 'yyyy年MM月dd日 星期w')
     }
   },
-  created () {
+  mounted () {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1200) {
+        this.carouselHeight = 600
+      } else if (window.innerWidth <= 1200) {
+        this.carouselHeight = 0.5 * window.innerWidth
+      }
+    }, false)
   }
 }
 </script>
@@ -167,61 +175,23 @@ export default {
   }
 
   .index-title {
-    display: none;
-  }
-
-  .description-area {
-    width: 100%;
-    background-color: #f7f7f7;
+    position: absolute;
+    display: inherit;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, 0);
     text-align: center;
+    font-weight: 200;
 
-    .description-container {
-      display: block;
-      width: 1260px;
-      margin: 0 auto;
-      height: 250px;
-      padding: 0 0 80px 0;
+    h1 {
+      font-size: 70px;
+      color: #ffffff;
     }
 
-    .description-slogan {
-      text-align: center;
+    p {
+      margin-top: 20px;
       font-size: 22px;
-      font-style: italic;
-      color: #606563;
-      line-height: 54px;
-      padding: 100px 0 80px 0;
-      font-family: 'siyuan',serif;
-      .pc {
-        display: block;
-      }
-    }
-  }
-
-  @media screen and (min-width: 1441px) {
-
-    .index-title {
-      position: absolute;
-      display: inherit;
-      top: 35%;
-      left: 50%;
-      transform: translate(-50%, 0);
-      text-align: center;
-      font-weight: 200;
-
-      h1 {
-        font-size: 80px;
-        color: #fff;
-      }
-
-      p {
-        margin-top: 20px;
-        font-size: 20px;
-        color: #898888;
-      }
-    }
-
-    .description-area {
-      height: 700px;
+      color: #edecec;
     }
   }
 
@@ -232,31 +202,36 @@ export default {
     text-align: center;
 
     h1 {
-      padding: 40px 0;
+      padding-top: 40px;
       font-size: 40px;
       color: #606464;
-      font-style: italic;
       font-family: 'siyuan',serif;
     }
 
-    .pic-container {
-      display: block;
-      width: 1260px;
-      margin: 0 auto;
-      height: 250px;
+    p {
+      padding: 20px 0;
+      font-size: 22px;
+      font-style: italic;
+      color: #5b6664;
     }
   }
 
-  .description-list {
+  .pic-container {
     display: block;
-    height: 250px;
-    margin-bottom: 40px;
+    width: 1200px;
+    margin: 0 auto;
+  }
+
+  .pic-list {
+    display: block;
+    height: 240px;
+    margin-bottom: 15px;
 
     li {
       display: inline-block;
       float: left;
       height: 100%;
-      width: 400px;
+      width: 380px;
       text-align: center;
       margin: 0 10px;
       position: relative;
@@ -340,16 +315,43 @@ export default {
     }
   }
 
-  .pic-list {
+  .description-area {
+    width: 100%;
+    background-color: #f7f7f7;
+    text-align: center;
+    height: 700px;
+  }
+
+  .description-slogan {
+    text-align: center;
+    font-size: 22px;
+    font-style: italic;
+    color: #606563;
+    line-height: 54px;
+    padding: 100px 0 80px 0;
+    font-family: 'siyuan',serif;
+    .pc {
+      display: block;
+    }
+  }
+
+  .description-container {
     display: block;
-    height: 250px;
-    margin-bottom: 20px;
+    width: 1200px;
+    margin: 0 auto;
+    padding: 0 0 80px 0;
+  }
+
+  .description-list {
+    display: block;
+    height: 240px;
+    margin-bottom: 40px;
 
     li {
       display: inline-block;
       float: left;
       height: 100%;
-      width: 400px;
+      width: 380px;
       text-align: center;
       margin: 0 10px;
       position: relative;
@@ -466,12 +468,49 @@ export default {
     }
   }
 
-  @media screen and (min-width: 769px) and (max-width: 1440px) {
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
+    .pic-area {
+      height: 860px;
+    }
+
+    .pic-container {
+      width: 100%;
+    }
+
+    .pic-list {
+      height: 200px;
+      li {
+        width: calc(33.33% - 20px);
+        height: 100%;
+      }
+    }
+
+    .description-container {
+      width: 100%;
+    }
+
+    .description-list {
+      height: 200px;
+      li {
+        width: calc(33.33% - 20px);
+        height: 100%;
+      }
+    }
+
+    .description-area {
+      height: 520px;
+    }
+
+    .description-slogan {
+      font-size: 0.9em;
+      padding: 60px 0 50px 0;
+    }
   }
 
-  @media screen and (min-width: 376px) and (max-width: 768px) {
+  @media screen and (max-width: 768px) {
+    .index-title {
+      display: none;
+    }
   }
 
-  @media screen and (max-width: 375px) {
-  }
 </style>
