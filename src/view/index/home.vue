@@ -6,7 +6,7 @@
       </video>
       <div class="mask"></div>
       <div class="index-title">
-        <h1>校园体育&nbsp;&nbsp;提升健康</h1>
+        <h1>校园体育<span class="title-interval"></span>提升健康</h1>
         <p>{{getTime()}}</p>
       </div>
     </div>
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="description-area">
-      <p class="description-slogan">校园PE，由青岛新体创体育产业集团有限公司研发，<span class="mobile"></span>青岛指尖跃动科技有限公司提供技术支持。<span class="pc"></span>校园PE旨在促进学生每天锻炼一小时，用运动时长获取PE体育学分，<span class="mobile"></span>从而保证学生运动时长，乐享健康生活。</p>
+      <p class="description-slogan">校园PE，由青岛新体创体育产业集团有限公司研发，<span class="tablet"></span>青岛指尖跃动科技有限公司提供技术支持。<span class="pc"></span>校园PE旨在促进学生每天锻炼一小时，用运动时长获取PE体育学分，<span class="tablet"></span>保证学生运动时长，乐享健康生活。</p>
       <div class="description-container">
         <ul class="description-list">
           <li v-for="(item,index) in descriptionPicList" :key="index">
@@ -177,9 +177,9 @@ export default {
   .index-title {
     position: absolute;
     display: inherit;
-    top: 35%;
+    top: 45%;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -50%);
     text-align: center;
     font-weight: 200;
 
@@ -193,6 +193,10 @@ export default {
       font-size: 22px;
       color: #edecec;
     }
+  }
+
+  .title-interval {
+    margin-left: 25px;
   }
 
   .pic-area {
@@ -241,16 +245,15 @@ export default {
         display: block;
         float: left;
         font-size: 30px;
-        height: 40px;
+        height: auto;
         text-align: center;
         position: absolute;
         left: 50%;
         top: 50%;
-        margin-top: -20px;
         z-index: 3;
         color: #fff;
         border-bottom: 1px solid rgba(255, 255, 255, 0);
-        transform: translate(-50%, 0);
+        transform: translate(-50%, -50%);
         transition: border-bottom 0.3s ease-out;
         padding-bottom: 5px;
       }
@@ -327,7 +330,7 @@ export default {
     font-size: 22px;
     font-style: italic;
     color: #606563;
-    line-height: 54px;
+    line-height: 60px;
     padding: 100px 0 80px 0;
     font-family: 'siyuan',serif;
     .pc {
@@ -361,16 +364,15 @@ export default {
         display: block;
         float: left;
         font-size: 30px;
-        height: 40px;
+        height: auto;
         text-align: center;
         position: absolute;
         left: 50%;
         top: 50%;
-        margin-top: -20px;
         z-index: 3;
         color: #fff;
         border-bottom: 1px solid rgba(255, 255, 255, 0);
-        transform: translate(-50%, 0);
+        transform: translate(-50%, -50%);
         transition: border-bottom 0.3s ease-out;
         padding-bottom: 5px;
       }
@@ -444,33 +446,37 @@ export default {
     .carousel-container {
       width: 1240px;
       margin: 0 auto;
-
-      .carousel-font {
-        display: block;
-        width: 450px;
-        position: absolute;
-        left: 6.6%;
-        top: 16%;
-        z-index: 666;
-
-        .title {
-          display: block;
-          color: #2a2e2e;
-          width: 450px;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          overflow: hidden;
-          font-size: 36px;
-          margin-bottom: 20px;
-          font-style: italic;
-        }
-      }
     }
   }
 
-  @media screen and (min-width: 769px) and (max-width: 1200px) {
+  .carousel-font {
+    display: block;
+    width: 450px;
+    position: absolute;
+    left: 6.6%;
+    top: 16%;
+    z-index: 666;
+
+    .title {
+      display: block;
+      color: #2a2e2e;
+      width: 450px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 36px;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+
+    .title-interval {
+      display: block;
+    }
     .pic-area {
-      height: 860px;
+      height: calc(100vw * 7.5/12 + 160px);
     }
 
     .pic-container {
@@ -478,11 +484,37 @@ export default {
     }
 
     .pic-list {
-      height: 200px;
+      height: calc(100vw * 0.18);
       li {
         width: calc(33.33% - 20px);
-        height: 100%;
+        height: calc(100vw * 0.18);
+
+        p {
+          font-size: 24px;
+        }
       }
+    }
+
+    .description-area {
+      height: auto;
+    }
+
+    .description-list {
+      height: calc(100vw * 0.18);
+      li {
+        width: calc(33.33% - 20px);
+        height: calc(100vw * 0.18);
+
+        p {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .description-slogan {
+      font-size: 16px;
+      padding: 60px 0 50px 0;
+      line-height: 50px;
     }
 
     .description-container {
@@ -490,20 +522,17 @@ export default {
     }
 
     .description-list {
-      height: 200px;
+      height: calc(100vw * 0.18);
       li {
         width: calc(33.33% - 20px);
-        height: 100%;
+        height: calc(100vw * 0.18);
       }
     }
 
-    .description-area {
-      height: 520px;
-    }
-
-    .description-slogan {
-      font-size: 0.9em;
-      padding: 60px 0 50px 0;
+    .carousel-font {
+      .title {
+        font-size: 30px;
+      }
     }
   }
 
@@ -511,6 +540,74 @@ export default {
     .index-title {
       display: none;
     }
+
+    .pic-area {
+      h1 {
+        font-size: 32px;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+
+    .description-slogan {
+      font-size: 16px;
+      line-height: 40px;
+    }
+
+    .tablet {
+      display: block;
+    }
+
+    .carousel-font {
+      .title {
+        font-size: 24px;
+      }
+    }
   }
 
+  @media screen and (max-width: 500px) {
+
+    .pic-area {
+      height: calc(100vw * 7.5/12 + 140px);
+      h1 {
+        font-size: 24px;
+      }
+      p {
+        padding: 10px 0;
+        font-size: 14px;
+      }
+    }
+
+    .pic-list {
+      li {
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .description-list {
+      li {
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .description-slogan {
+      margin: 0 20px;
+      line-height: 30px;
+    }
+
+    .tablet {
+      display: none;
+    }
+
+    .carousel-font {
+      .title {
+        font-size: 14px;
+      }
+    }
+  }
 </style>

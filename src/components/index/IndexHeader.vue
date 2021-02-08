@@ -6,14 +6,14 @@
         <el-menu class="left-btn" mode="horizontal" text-color="#ffffff" active-text-color="#409EFF" unique-opened router>
           <template v-for="(item,index) in leftHeaderList">
             <el-menu-item :index="item.index" :key="index">
-              <span slot="title" style="font-size: 18px;">{{item.title}}</span>
+              <span slot="title" class="title-style">{{item.title}}</span>
             </el-menu-item>
           </template>
         </el-menu>
         <el-menu class="right-btn" mode="horizontal" text-color="#ffffff" active-text-color="#409EFF" unique-opened router>
           <template v-for="(item,index) in rightHeaderList">
             <el-menu-item :index="item.index" :key="index">
-              <span slot="title" style="font-size: 18px;">{{item.title}}</span>
+              <span slot="title" class="title-style">{{item.title}}</span>
             </el-menu-item>
           </template>
         </el-menu>
@@ -47,10 +47,6 @@ export default {
       ],
       rightHeaderList: [
         {
-          index: '/home',
-          title: '更新日志'
-        },
-        {
           index: '/index',
           title: '使用帮助'
         },
@@ -83,7 +79,6 @@ export default {
     .left-btn {
       margin-right: 15px;
       vertical-align: middle;
-      font-size: 25px;
       float: left;
       line-height: 60px;
       cursor: pointer;
@@ -92,7 +87,6 @@ export default {
     .right-btn {
       margin-right: 15px;
       vertical-align: middle;
-      font-size: 25px;
       float: right;
       line-height: 60px;
       cursor: pointer;
@@ -116,5 +110,19 @@ export default {
 
   .el-menu-item:hover {
     color: #409EFF !important;
+  }
+
+  .title-style {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1200px){
+
+    .title-style {
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 768px){
   }
 </style>

@@ -248,6 +248,11 @@ export default {
   }
 
   @media screen and (min-width: 769px) and (max-width: 1200px) {
+
+    .foot-container {
+      width: 95%;
+    }
+
     .friendly-link, .cooperation, .legal-info {
       width: 18%;
     }
@@ -256,10 +261,6 @@ export default {
       a {
         font-size: 14px;
       }
-    }
-
-    .foot-container {
-      width: 95%;
     }
 
     .copyright {
@@ -277,6 +278,7 @@ export default {
 
     .foot-container {
       height: auto;
+      width: 100%;
     }
 
     .share-us {
