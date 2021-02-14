@@ -1,7 +1,7 @@
 <template>
     <div class="scroll-style">
       <v-index-header></v-index-header>
-      <div>
+      <div class="mobile-style">
         <router-view></router-view>
       </div>
       <v-index-footer></v-index-footer>
@@ -22,4 +22,10 @@ export default {
 </script>
 
 <style scoped>
+  @media screen and (max-width: 768px) {
+    .mobile-style {
+      /*position: relative;*/
+      margin-top: 40px;
+    }
+  }
 </style>

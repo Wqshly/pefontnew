@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="banner-area">
-      <video poster="../../assets/img/preMp4.png" loop autoplay muted playsinline>
+      <video poster="../../assets/img/preMp4.png" loop autoplay muted playsinline webkit-playsinline="true" preload>
         <source src="../../assets/video/indexVideo.mp4" type="video/mp4">
       </video>
       <div class="mask"></div>
@@ -139,7 +139,7 @@ export default {
       return formatDate(date, 'yyyy年MM月dd日 星期w')
     }
   },
-  mounted () {
+  created () {
     window.addEventListener('resize', () => {
       if (window.innerWidth > 1200) {
         this.carouselHeight = 600
@@ -519,6 +519,7 @@ export default {
 
     .description-container {
       width: 100%;
+      padding-bottom: 60px;
     }
 
     .description-list {
@@ -547,6 +548,28 @@ export default {
       }
       p {
         font-size: 16px;
+      }
+    }
+
+    .pic-list {
+      li {
+        p {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .description-container {
+      padding-bottom: 40px;
+    }
+
+    .description-list {
+      li {
+        width: calc(33.33% - 10px);
+        margin: 0 5px;
+        p {
+          font-size: 16px;
+        }
       }
     }
 
@@ -582,20 +605,23 @@ export default {
     .pic-list {
       li {
         p {
-          font-size: 14px;
+          font-size: 12px;
         }
       }
     }
 
     .description-list {
+      margin-bottom: 20px;
       li {
         p {
-          font-size: 14px;
+          font-size: 12px;
         }
       }
     }
 
     .description-slogan {
+      padding: 50px 0 40px 0;
+      font-size: 12px;
       margin: 0 20px;
       line-height: 30px;
     }
@@ -608,6 +634,40 @@ export default {
       .title {
         font-size: 14px;
       }
+    }
+  }
+
+  @media screen and (max-width: 375px) {
+
+    .pic-area {
+      height: calc(100vw * 7.5/12 + 85px);
+      h1 {
+        padding-top: 25px;
+        font-size: 18px;
+      }
+      p {
+        padding: 10px 0;
+        font-size: 10px;
+      }
+    }
+
+    .pic-list {
+      margin-bottom: 5px;
+      li {
+        width: calc(33.33% - 6px);
+        margin: 0 3px;
+      }
+    }
+
+    .description-list {
+      margin-bottom: 10px;
+    }
+
+    .description-slogan {
+      padding: 40px 0 30px 0;
+      margin: 0 10px;
+      font-size: 12px;
+      line-height: 20px;
     }
   }
 </style>

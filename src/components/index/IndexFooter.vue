@@ -388,4 +388,15 @@ export default {
       }
     }
   }
+
+  @media screen and (max-width: 375px){
+
+    .copyright {
+      font-size: 10px;
+    }
+
+    .left-link a {
+      font-size: 12px;
+    }
+  }
 </style>
