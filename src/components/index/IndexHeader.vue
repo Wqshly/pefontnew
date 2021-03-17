@@ -4,14 +4,16 @@
       <div class="sidebar-box">
         <div class="sidebar-container">
           <img class="header-logo" v-lazy="require('../../assets/img/index/largePE.png')" @click="logoImgClick()"/>
-          <el-menu class="left-btn pc-menu" mode="horizontal" text-color="#ffffff" active-text-color="#409EFF" unique-opened router>
+          <el-menu class="left-btn pc-menu" mode="horizontal" text-color="#ffffff" active-text-color="#409EFF"
+                   unique-opened router>
             <template v-for="(item,index) in leftHeaderList">
               <el-menu-item :index="item.index" :key="index">
                 <span slot="title" class="title-style">{{item.title}}</span>
               </el-menu-item>
             </template>
           </el-menu>
-          <el-menu class="right-btn" mode="horizontal" text-color="#ffffff" active-text-color="#409EFF" unique-opened router>
+          <el-menu class="right-btn" mode="horizontal" text-color="#ffffff" active-text-color="#409EFF" unique-opened
+                   router>
             <template v-for="(item,index) in rightHeaderList">
               <el-menu-item :index="item.index" :key="index">
                 <span slot="title" class="title-style">{{item.title}}</span>
@@ -34,7 +36,6 @@
             </el-table>
           </div>
         </el-collapse-transition>
-
       </div>
     </div>
   </div>
@@ -79,21 +80,17 @@ export default {
   methods: {
     logoImgClick () {
       if (window.innerWidth > 768) {
-        console.log('windows')
         this.$router.push('/index')
       } else {
-        console.log('mobile')
         this.isCollapse = !this.isCollapse
-        console.log(this.isCollapse)
       }
     },
     tableRowStyle ({row, rowIndex}) {
-      let styleJson = {
+      return {
         'font-size': '12px',
         'padding': '8px 0',
         'cursor': 'pointer'
       }
-      return styleJson
     },
     cellClick (val) {
       this.isCollapse = false
@@ -145,7 +142,7 @@ export default {
     }
   }
 
-  .sidebar-box{
+  .sidebar-box {
     max-width: 1440px;
     margin: 0 auto;
   }
@@ -180,13 +177,13 @@ export default {
     font-size: 20px;
   }
 
-  @media screen and (min-width: 769px) and (max-width: 1200px){
+  @media screen and (min-width: 769px) and (max-width: 1200px) {
     .title-style {
       font-size: 16px;
     }
   }
 
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
 
     .header-container {
       margin-bottom: 40px;
@@ -196,7 +193,7 @@ export default {
       display: inherit;
       height: 40px;
 
-      .left-btn,.right-btn {
+      .left-btn, .right-btn {
         margin-right: 5px;
         line-height: 40px;
       }

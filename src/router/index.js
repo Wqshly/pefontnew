@@ -17,6 +17,8 @@ const home = () => Promise.resolve(require('@/view/home'))
 // 早操
 const clockIn = () => Promise.resolve(require('@/view/morningExercises/clockIn'))
 const setCheckStaff = () => Promise.resolve(require('@/view/morningExercises/setCheckStaff'))
+// 比赛
+// const
 // 活动
 const activityPromotional = () => Promise.resolve(require('@/view/activity/promotional'))
 const activityRegistration = () => Promise.resolve(require('@/view/activity/registration'))
@@ -26,7 +28,12 @@ const myActivity = () => Promise.resolve(require('@/view/activity/myActivity'))
 const manageTemplate = () => Promise.resolve(require('@/components/manage/manageTemplate'))
 const manageHome = () => Promise.resolve(require('@/view/manage/home'))
 // 学校管理
+const collegeManage = () => Promise.resolve(require('@/view/manage/school/collegeManage'))
+const classManage = () => Promise.resolve(require('@/view/manage/school/classManage'))
 const studentManage = () => Promise.resolve(require('@/view/manage/school/studentManage'))
+// 活动管理
+const activityApproval = () => Promise.resolve(require('@/view/manage/activity/activityApproval'))
+const cardTest = () => Promise.resolve(require('@/view/manage/activity/cardTest'))
 
 // 多次点击同一路由时，执行catch，避免报错。
 const routerPush = Router.prototype.push
@@ -103,10 +110,42 @@ export default new Router({
           }
         },
         {
+          path: '/manage/collegeManage',
+          component: collegeManage,
+          meta: {
+            title: '院系信息管理',
+            schoolAdmin: true
+          }
+        },
+        {
+          path: '/manage/classManage',
+          component: classManage,
+          meta: {
+            title: '班级信息管理',
+            schoolAdmin: true
+          }
+        },
+        {
           path: '/manage/studentManage',
           component: studentManage,
           meta: {
             title: '学生管理',
+            schoolAdmin: true
+          }
+        },
+        {
+          path: '/manage/activityApproval',
+          component: activityApproval,
+          meta: {
+            title: '活动审批',
+            schoolAdmin: true
+          }
+        },
+        {
+          path: '/manage/cardTest',
+          component: cardTest,
+          meta: {
+            title: '活动审批',
             schoolAdmin: true
           }
         }

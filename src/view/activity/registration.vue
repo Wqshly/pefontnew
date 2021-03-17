@@ -93,10 +93,32 @@ export default {
   data () {
     return {
       url: {
-        refreshUrl: '/activity/queryActivityListSignIn'
+        refreshUrl: '/activity/queryActivityListSignIn',
+        searchUrl: '/activity/queryActivityListAll'
       },
       tableData: [], // 表数据
-      searchList: [],
+      searchList: [
+        {
+          label: 'id',
+          value: 'id'
+        },
+        {
+          label: '活动名称',
+          value: 'activityName'
+        },
+        {
+          label: '活动地点',
+          value: 'activityArea'
+        },
+        {
+          label: '活动开始时间',
+          value: 'startTime'
+        },
+        {
+          label: '活动结束时间',
+          value: 'endTime'
+        }
+      ],
       tablePK: 'id',
       searchData: {title: '', content: ''},
       defaultSort: {prop: 'id', order: 'ascending'},
@@ -154,7 +176,7 @@ export default {
       } else if (this.searchData.content === '') {
         this.$message.warning('请输入搜索内容！')
       } else {
-        this.getRecord(this.url.searchUrl + this.searchData.title + '/' + this.searchData.content)
+        this.getRecord(this.url.searchUrl + '/' + this.searchData.title + '/' + this.searchData.content)
       }
     },
     // 驼峰转下划线

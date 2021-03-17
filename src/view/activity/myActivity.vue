@@ -98,7 +98,8 @@ export default {
   data () {
     return {
       url: {
-        refreshUrl: '/activity/getActivityByOrganizers'
+        refreshUrl: '/activity/getActivityByOrganizers',
+        searchUrl: ''
       },
       tableData: [], // 表数据
       searchList: [],
@@ -161,7 +162,7 @@ export default {
       } else if (this.searchData.content === '') {
         this.$message.warning('请输入搜索内容！')
       } else {
-        this.getRecord(this.url.searchUrl + this.searchData.title + '/' + this.searchData.content)
+        this.getRecord(this.url.searchUrl + '/' + this.status + this.searchData.title + '/' + this.searchData.content)
       }
     },
     // 驼峰转下划线

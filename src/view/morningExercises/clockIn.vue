@@ -36,7 +36,10 @@ export default {
         {value: 'signOutTime', label: '签退时间', width: '160'},
         {value: 'flag', label: '状态', minWidth: '160'}
       ],
-      url: {},
+      url: {
+        refreshUrl: '/SignIn/getSignInByClass',
+        searchUrl: '/SignIn/getSignByClass'
+      },
       buttonShow: {},
       funcBtn: {
         isShow: true,
@@ -141,7 +144,7 @@ export default {
   },
   mounted () {
     // this.isClockDate()
-    this.$refs[this.refName].getRecord('/SignIn/getSignInByClass')
+    this.$refs[this.refName].getRecord(this.url.refreshUrl)
   }
 }
 </script>

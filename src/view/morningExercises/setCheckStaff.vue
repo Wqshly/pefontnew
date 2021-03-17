@@ -30,7 +30,7 @@ export default {
         refreshUrl: '/student/queryStudentInfoByClass',
         addUrl: '/student/addStudent',
         editUrl: '/school/updateSchool',
-        searchUrl: '/student/queryStudentInfoBySchool/',
+        searchUrl: '/student/queryStudentInfoBySchool',
         deleteUrl: '/student/deleteStudent'
       },
       buttonShow: {},

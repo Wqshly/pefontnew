@@ -12,4 +12,8 @@ export default {
 
 <style lang="less">
   @import "style/common";
+
+  #app {
+    height: 100%;
+  }
 </style>

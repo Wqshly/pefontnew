@@ -22,6 +22,7 @@ import {fas} from '@fortawesome/free-solid-svg-icons'
 import {fab} from '@fortawesome/free-brands-svg-icons'
 
 import BasicTableTemp from '@/components/tableTemplate/BasicTableTemp'
+import BasicCardTemp from '@/components/cardTemplate/BasicCardTemp'
 import MultilevelLinkage from '@/components/areaCheck/MultilevelLinkage'
 
 Vue.use(ElementUI)
@@ -36,6 +37,7 @@ Vue.use(VueLazyload, {
 Vue.use(VueParticles)
 
 Vue.component('basic-table-temp', BasicTableTemp)
+Vue.component('basic-card-temp', BasicCardTemp)
 Vue.component('ElCollapseTransition', CollapseTransition)
 library.add(fas)
 library.add(fab)

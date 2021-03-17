@@ -1,132 +1,155 @@
 <template>
   <div class="container">
-    <basic-table-temp :ref="refName"
-                      :url="url"
-                      :title-show="false"
-                      :table-header-list="tableHeaderList"
-                      :search-list="tableHeaderList"
-                      @click-row="clickRow"
-                      @add-record="addRecord"
-                      @edit-record="editRecord"
-                      @upload-excel="uploadExcelMethod"
-                      @data-format="dataFormat">
-      <el-form slot="addForm" :model="addForm" style="overflow: auto" label-width="120px" ref="addForm" :rules="addFormRules">
-        <el-form-item label="学院 - 班级：" prop="classesId">
-          <el-select v-model="addForm.collegeId" @change="addForm.classesId = ''" placeholder="选择学院" value="">
-            <el-option v-for="(item,index) in collegeList"
-                       :key="index"
-                       :label="item.collegeName"
-                       :value="item.id">
-            </el-option>
-          </el-select>
-          &nbsp;-&nbsp;
-          <el-select v-model="addForm.classesId" placeholder="选择班级" @click.native="getClass('addForm')" value="">
-            <el-option v-for="(item,index) in classList"
-                       :key="index"
-                       :label="item.className"
-                       :value="item.id">
-            </el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="学号：" prop="studentNumber">
-          <el-input v-model="addForm.studentNumber"></el-input>
-        </el-form-item>
-        <el-form-item label="姓名：" prop="studentName">
-          <el-input v-model="addForm.studentName"></el-input>
-        </el-form-item>
-        <el-form-item label="当前学期：">
-          <el-input v-model="addForm.gradeNumber"></el-input>
-        </el-form-item>
-        <el-form-item label="性别：" prop="sex">
-          <el-radio v-model="addForm.sex" label="男">男</el-radio>
-          <el-radio v-model="addForm.sex" label="女">女</el-radio>
-        </el-form-item>
-        <el-form-item label="出生日期：" prop="birthday">
-          <el-date-picker v-model="addForm.birthday" type="date" value-format="yyyy-MM-dd HH:mm:ss" placeholder="选择日期">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="民族：" prop="nationalCode">
-          <el-input v-model="addForm.nationalCode"></el-input>
-        </el-form-item>
-        <el-form-item label="身份证号：" prop="idCard">
-          <el-input v-model="addForm.idCard"></el-input>
-        </el-form-item>
-        <el-form-item label="地址：">
-        </el-form-item>
-      </el-form>
-      <el-form slot="editForm" :model="editForm" style="overflow: auto" label-width="120px" ref="editForm">
-        <el-form-item label="学院 - 班级：" prop="classesId">
-          <el-select v-model="editForm.collegeId" @change="editForm.classesId = ''" placeholder="选择学院" value="">
-            <el-option v-for="(item,index) in collegeList"
-                       :key="index"
-                       :label="item.collegeName"
-                       :value="item.id">
-            </el-option>
-          </el-select>
-          &nbsp;-&nbsp;
-          <el-select v-model="editForm.classesName" placeholder="选择班级" @click.native="getClass('editForm')" value="">
-            <el-option v-for="(item,index) in classList"
-                       :key="index"
-                       :label="item.className"
-                       :value="item.className">
-            </el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="学号：" prop="studentNumber">
-          <el-input v-model="editForm.studentNumber"></el-input>
-        </el-form-item>
-        <el-form-item label="姓名：" prop="studentName">
-          <el-input v-model="editForm.studentName"></el-input>
-        </el-form-item>
-        <el-form-item label="当前学期：">
-          <el-input v-model="editForm.gradeNumber"></el-input>
-        </el-form-item>
-        <el-form-item label="性别：" prop="sex">
-          <el-radio v-model="editForm.sex" label="男">男</el-radio>
-          <el-radio v-model="editForm.sex" label="女">女</el-radio>
-        </el-form-item>
-        <el-form-item label="出生日期：" prop="birthday">
-          <el-date-picker v-model="editForm.birthday" type="date" value-format="yyyy-MM-dd HH:mm:ss" placeholder="选择日期">
-          </el-date-picker>
-        </el-form-item>
-        <el-form-item label="民族：" prop="nationalCode">
-          <el-input v-model="editForm.nationalCode"></el-input>
-        </el-form-item>
-        <el-form-item label="身份证号：" prop="idCard">
-          <el-input v-model="editForm.idCard"></el-input>
-        </el-form-item>
-        <el-form-item label="地址：">
-        </el-form-item>
-      </el-form>
-      <div slot="excelForm">
-        <div class="upload-excel-col">
-          <div style="float: left;padding-right: 20px;">
-            <p>1.下载导入模板: </p>
+    <div class="container-inner">
+      <basic-table-temp :ref="refName"
+                        :url="url"
+                        :title-show="false"
+                        :table-header-list="tableHeaderList"
+                        :search-list="tableHeaderList"
+                        @click-row="clickRow"
+                        @add-record="addRecord"
+                        @edit-record="editRecord"
+                        @upload-excel="uploadExcelMethod"
+                        @data-format="dataFormat">
+        <el-form slot="addForm" :model="addForm" style="overflow: auto" label-width="120px" ref="addForm" :rules="addFormRules">
+          <el-form-item label="学院 - 班级：" prop="classesId">
+            <el-select v-model="addForm.collegeId" @change="addForm.classesId = ''" placeholder="选择学院" value="">
+              <el-option v-for="(item,index) in collegeList"
+                         :key="index"
+                         :label="item.collegeName"
+                         :value="item.id">
+              </el-option>
+            </el-select>
+            &nbsp;-&nbsp;
+            <el-select v-model="addForm.classesId" placeholder="选择班级" @click.native="getClass('addForm')" value="">
+              <el-option v-for="(item,index) in classList"
+                         :key="index"
+                         :label="item.className"
+                         :value="item.id">
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="学号：" prop="studentNumber">
+            <el-input v-model="addForm.studentNumber"></el-input>
+          </el-form-item>
+          <el-form-item label="姓名：" prop="studentName">
+            <el-input v-model="addForm.studentName"></el-input>
+          </el-form-item>
+          <el-form-item label="当前学期：">
+            <el-input v-model="addForm.gradeNumber"></el-input>
+          </el-form-item>
+          <el-form-item label="性别：" prop="sex">
+            <el-radio v-model="addForm.sex" label="男">男</el-radio>
+            <el-radio v-model="addForm.sex" label="女">女</el-radio>
+          </el-form-item>
+          <el-form-item label="出生日期：" prop="birthday">
+            <el-date-picker v-model="addForm.birthday" type="date" value-format="yyyy-MM-dd HH:mm:ss" placeholder="选择日期">
+            </el-date-picker>
+          </el-form-item>
+          <el-form-item label="民族：" prop="nationalCode">
+            <el-input v-model="addForm.nationalCode"></el-input>
+          </el-form-item>
+          <el-form-item label="身份证号：" prop="idCard">
+            <el-input v-model="addForm.idCard"></el-input>
+          </el-form-item>
+          <el-form-item label="地址：">
+          </el-form-item>
+        </el-form>
+        <el-form slot="editForm" :model="editForm" style="overflow: auto" label-width="120px" ref="editForm">
+          <el-form-item label="学院 - 班级：" prop="classesId">
+            <el-select v-model="editForm.collegeId" @change="editForm.classesId = ''" placeholder="选择学院" value="">
+              <el-option v-for="(item,index) in collegeList"
+                         :key="index"
+                         :label="item.collegeName"
+                         :value="item.id">
+              </el-option>
+            </el-select>
+            &nbsp;-&nbsp;
+            <el-select v-model="editForm.classesName" placeholder="选择班级" @click.native="getClass('editForm')" value="">
+              <el-option v-for="(item,index) in classList"
+                         :key="index"
+                         :label="item.className"
+                         :value="item.className">
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="学号：" prop="studentNumber">
+            <el-input v-model="editForm.studentNumber"></el-input>
+          </el-form-item>
+          <el-form-item label="姓名：" prop="studentName">
+            <el-input v-model="editForm.studentName"></el-input>
+          </el-form-item>
+          <el-form-item label="当前学期：">
+            <el-input v-model="editForm.gradeNumber"></el-input>
+          </el-form-item>
+          <el-form-item label="性别：" prop="sex">
+            <el-radio v-model="editForm.sex" label="男">男</el-radio>
+            <el-radio v-model="editForm.sex" label="女">女</el-radio>
+          </el-form-item>
+          <el-form-item label="出生日期：" prop="birthday">
+            <el-date-picker v-model="editForm.birthday" type="date" value-format="yyyy-MM-dd HH:mm:ss" placeholder="选择日期">
+            </el-date-picker>
+          </el-form-item>
+          <el-form-item label="民族：" prop="nationalCode">
+            <el-input v-model="editForm.nationalCode"></el-input>
+          </el-form-item>
+          <el-form-item label="身份证号：" prop="idCard">
+            <el-input v-model="editForm.idCard"></el-input>
+          </el-form-item>
+          <el-form-item label="地址：">
+          </el-form-item>
+        </el-form>
+        <div slot="excelForm">
+          <div class="upload-excel-col">
+            <div style="float: left;padding-right: 20px;">
+              <p style="font-size: 20px;">如您尚未上传班级信息，请先上传班级信息，否则将导入失败！</p>
+            </div>
           </div>
-          <el-button>
-            下载&nbsp;<font-awesome-icon :icon="['fas', 'download']" class="button-icon"></font-awesome-icon>
-          </el-button>
-        </div>
-        <div class="upload-excel-col">
-          <div style="float: left;padding-right: 20px;">
-            <p>2.上传导入文件: </p>
-          </div>
-          <el-upload ref="upload"
-                     action
-                     :auto-upload="false"
-                     limit="1"
-                     accept=".xls,.xlsx"
-                     :file-list="fileList"
-                     :before-upload="beforeUpload"
-                     :on-change="handleChange"
-                     :on-remove="handleRemove">
+          <div class="upload-excel-col">
+            <div style="float: left;padding-right: 20px;">
+              <p>1.下载《学院-班级信息表.xlsx》模板: </p>
+            </div>
             <el-button>
-              上传&nbsp;<font-awesome-icon :icon="['fas', 'cloud-upload-alt']" class="button-icon"></font-awesome-icon>
+              下载&nbsp;<font-awesome-icon :icon="['fas', 'download']" class="button-icon"></font-awesome-icon>
             </el-button>
-          </el-upload>
+          </div>
+          <div class="upload-excel-col">
+            <div style="float: left;padding-right: 20px;">
+              <p>2.上传《学院-班级信息表》: </p>
+            </div>
+            <el-button>
+              下载&nbsp;<font-awesome-icon :icon="['fas', 'download']" class="button-icon"></font-awesome-icon>
+            </el-button>
+          </div>
+          <div class="upload-excel-col">
+            <div style="float: left;padding-right: 20px;">
+              <p>1.下载《学生信息表》模板: </p>
+            </div>
+            <el-button>
+              下载&nbsp;<font-awesome-icon :icon="['fas', 'download']" class="button-icon"></font-awesome-icon>
+            </el-button>
+          </div>
+          <div class="upload-excel-col">
+            <div style="float: left;padding-right: 20px;">
+              <p>2.上传文件导入数据: </p>
+            </div>
+            <el-upload ref="upload"
+                       action
+                       :auto-upload="false"
+                       :limit="1"
+                       accept=".xls,.xlsx"
+                       :file-list="fileList"
+                       :before-upload="beforeUpload"
+                       :on-change="handleChange"
+                       :on-remove="handleRemove">
+              <el-button>
+                上传&nbsp;<font-awesome-icon :icon="['fas', 'cloud-upload-alt']" class="button-icon"></font-awesome-icon>
+              </el-button>
+            </el-upload>
+          </div>
         </div>
-      </div>
-    </basic-table-temp>
+      </basic-table-temp>
+    </div>
   </div>
 </template>
 
@@ -197,7 +220,7 @@ export default {
         refreshUrl: '/student/queryStudentInfoBySchool',
         addUrl: '/student/addStudent',
         editUrl: '/school/updateSchool',
-        searchUrl: '/student/queryStudentInfoBySchool/',
+        searchUrl: '/student/queryStudentInfoBySchool',
         deleteUrl: '/student/deleteStudent'
       },
       tableHeaderList: [
@@ -209,9 +232,9 @@ export default {
         {value: 'sex', label: '性别', width: '80'},
         {value: 'birthday', label: '出生日期', width: '140'},
         {value: 'gradeNumber', label: '年级编号', width: '120'},
-        {value: 'nationalCode', label: '民族编号', width: '140'},
-        {value: 'idCard', label: '身份证号', width: '140'},
-        {value: 'address', label: '家庭住址', width: '140'}
+        {value: 'nationalCode', label: '民族编号', width: '120'},
+        {value: 'idCard', label: '身份证号', width: '160'},
+        {value: 'address', label: '家庭住址', minWidth: '140'}
       ],
       addForm: {collegeId: '', classesId: '', studentName: '', studentNumber: '', term: '', sex: '', birthday: '', gradeNumber: '', nationalCode: '', idCard: '', address: ''}, // 新增
       editForm: {collegeId: '', collegeName: '', classesId: '', classesName: '', studentName: '', studentNumber: '', term: '', sex: '', birthday: '', gradeNumber: '', nationalCode: '', idCard: '', address: ''}, // 编辑
@@ -359,6 +382,7 @@ export default {
         const data = new FormData()
         const UploadExcel = this.fileList[0].raw
         data.append('excelFile', UploadExcel)
+        console.log(data)
         this.$api.http.upload('/importFile/readExcel', data)
           .then(res => {
             this.$message.success('导入成功！')
@@ -376,13 +400,23 @@ export default {
 </script>
 
 <style scoped>
+  /*.container {*/
+  /*  width: 100%;*/
+  /*  max-width: 1140px;*/
+  /*  min-height: 100px;*/
+  /*  margin: 0 auto;*/
+  /*  background-color: white;*/
+  /*  padding-bottom: 50px;*/
+  /*}*/
+
   .container {
     width: 100%;
-    max-width: 1140px;
-    min-height: 100px;
-    margin: 0 auto;
+  }
+
+  .container-inner {
+    margin: 10px;
+    padding: 10px;
     background-color: white;
-    padding-bottom: 50px;
   }
 
   .upload-excel-col {

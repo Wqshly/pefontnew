@@ -49,8 +49,31 @@ export default {
           title: '学校管理',
           subs: [
             {
+              index: '/manage/collegeManage',
+              title: '院系信息管理'
+            },
+            {
+              index: '/manage/classManage',
+              title: '班级信息管理'
+            },
+            {
               index: '/manage/studentManage',
               title: '学生信息管理'
+            }
+          ]
+        },
+        {
+          icon: 'location-arrow',
+          index: '/manage/activity',
+          title: '活动管理',
+          subs: [
+            {
+              title: '审批活动',
+              index: '/manage/activityApproval'
+            },
+            {
+              title: 'card测试',
+              index: '/manage/cardTest'
             }
           ]
         },

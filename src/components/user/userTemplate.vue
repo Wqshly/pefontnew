@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div style="height: 100%;">
       <v-header></v-header>
       <div class="main-style">
         <router-view></router-view>
@@ -17,11 +17,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="less">
 
   .main-style {
     width: auto;
-    height: 100%;
     padding-top: 5px;
     overflow: hidden;
   }

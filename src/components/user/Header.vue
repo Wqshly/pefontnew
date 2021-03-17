@@ -201,14 +201,6 @@ export default {
               index: '/activity/myActivity'
             },
             {
-              title: '校内通知',
-              index: '/activity/notice'
-            },
-            {
-              title: '活动管理',
-              index: '/activity/management'
-            },
-            {
               title: '组织签到',
               index: '/activity/check'
             }

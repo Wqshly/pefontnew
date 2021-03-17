@@ -1,6 +1,6 @@
 <template>
   <div class="activity-promotional">
-    <div style="margin: 0 auto; width: 700px;background-color: #ffffff">
+    <div class="activity-promotional-container">
       <p style="text-align: center;font-size: 30px; padding: 20px;">发起活动</p>
       <el-form style="padding-bottom: 20px;" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
         <el-form-item label="活动名称：" prop="activityName">
@@ -164,11 +164,11 @@ export default {
           this.$api.http.upload(url, formData)
             .then(res => {
               this.$message.success('成功!')
-              this.$confirm('您已成功创建活动，点击确认将跳转到活动首页！', '提示', {
+              this.$confirm('您已成功创建活动，点击确认将跳转到活动报名页！', '提示', {
                 confirmButtonText: '确认',
                 cancelButtonText: '取消'
               }).then(() => {
-                this.$router.push('/activity/management')
+                this.$router.push('/activity/registration')
               }).catch(() => {})
             })
             .catch(err => {
@@ -188,11 +188,19 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
 
   .activity-promotional {
     width: 100%;
-    background-color: #f2f5f6;
+    height: 100%;
+    background-color: #ffffff;
+  }
+
+  .activity-promotional-container {
+    margin: 10px auto;
+    border-radius: 10px;
+    width: 700px;
+    background-color: #f6f8fc;
   }
 
   .activity-promotional .el-select > .el-input {

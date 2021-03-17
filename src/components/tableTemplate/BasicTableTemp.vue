@@ -8,11 +8,11 @@
           <el-button v-if="buttonShow.editButton" style="color: #f7c900;" size="small" @click.native="openEditDialog" icon="el-icon-edit-outline">编辑</el-button>
           <el-button v-if="buttonShow.deleteButton" style="color: #b9c9c7;" size="small" @click.native="deleteRecord" icon="el-icon-delete" :disabled="this.selectRecord.length === 0">删除</el-button>
           <el-button v-if="buttonShow.refreshButton" style="color: #12ce66;" size="small" @click.native="refreshRecord" icon="el-icon-refresh-right">刷新</el-button>
-          <el-button v-if="buttonShow.downloadButton" style="color: #12ce66" size="small" @click.native="refreshRecord" icon="el-icon-download">下载</el-button>
-          <el-button v-if="buttonShow.uploadButton" style="color: #12ce66" size="small" @click.native="openImportExcelDialog" icon="el-icon-upload">上传</el-button>
+          <el-button v-if="buttonShow.downloadButton" style="color: #12ce66" size="small" @click.native="downloadTemp" icon="el-icon-download">下载模板</el-button>
+          <el-button v-if="buttonShow.uploadButton" style="color: #12ce66" size="small" @click.native="openImportExcelDialog" icon="el-icon-upload">批量上传</el-button>
         </el-button-group>
         <slot name="expand-button"></slot>
-        <div style="float: right">
+        <div v-if="searchShow" style="float: right">
           <el-input v-model="searchData.content" class="search-box" placeholder="请输入内容搜索" size="small" clearable>
             <template slot="prepend">
               <el-select style="width: 100px;" v-model="searchData.title" placeholder="请选择">
@@ -159,6 +159,7 @@ export default {
       }
     },
     tableTools: {type: Boolean, default: true},
+    searchShow: {type: Boolean, default: true},
     buttonShow: {
       default () {
         return {
@@ -291,13 +292,17 @@ export default {
     refreshRecord () {
       this.getRecord(null)
     },
+    // 下载模板
+    downloadTemp () {
+      this.$emit('download-template')
+    },
     search () {
       if (this.searchData.title === '') {
         this.$message.warning('请勾选要筛选的项')
       } else if (this.searchData.content === '') {
         this.$message.warning('请输入搜索内容！')
       } else {
-        this.getRecord(this.url.searchUrl + this.searchData.title + '/' + this.searchData.content)
+        this.getRecord(this.url.searchUrl + '/' + this.searchData.title + '/' + this.searchData.content)
       }
     },
     reset () {
@@ -343,7 +348,7 @@ export default {
       }
       obj.currentPageNumber = this.currentPageNumber
       obj.pageSize = this.pageSize
-      obj.sort = this.toLine(this.sortField) + ' ' + this.sortMethod.replace('descending', ' desc').replace('ascending', ' asc')
+      obj.sort = this.toLine(this.sortField) + ' ' + this.sortMethod.replace('descending', 'desc').replace('ascending', 'asc')
       let objJson = JSON.stringify(obj)
       this.tableLoading = true
       this.$api.http.postJson(url, objJson)

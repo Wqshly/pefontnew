@@ -4,7 +4,7 @@
     <div class="main-container" :class="{'main-container-collapse':collapse}">
       <manage-header style="z-index: 999"></manage-header>
       <v-tags></v-tags>
-      <div class="content">
+      <div class="content scroll-style">
         <transition name="move" mode="out-in">
           <keep-alive :include="tagsList">
             <router-view></router-view>
@@ -70,7 +70,7 @@ export default {
     position: absolute;
     width: 100%;
     height: calc(100% - 115px);
-    overflow-y: hidden;
+    /*overflow-y: hidden;*/
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background-color: #f0f2f5;

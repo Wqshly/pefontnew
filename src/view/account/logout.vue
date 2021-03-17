@@ -10,14 +10,14 @@ export default {
     logout () {
       this.$api.http.get('/login/logout')
         .then(res => {
-          this.$router.push('/login')
           sessionStorage.removeItem('userInfo')
         })
         .catch(err => {
           this.$router.push.go(-1)
-          this.$message.error('退出失败，检查是否处于登录状态')
+          this.$message.error('您已退出登录！请勿重复操作！')
           console.log(err)
         })
+      this.$router.push('/login')
     }
   },
   mounted () {
