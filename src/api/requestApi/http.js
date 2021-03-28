@@ -30,9 +30,8 @@ service.interceptors.response.use(res => {
     return res.data
   } else if (res.data.code === 1) {
     Message.error({message: res.data.msg})
-    // Message.error({message: '未知错误，请联系管理员!'})
   } else if (res.data.code === 2) {
-    Message.error({message: res.data.msg})
+    Message.warning({message: res.data.msg})
   }
   return Promise.reject(res)
 }, error => {

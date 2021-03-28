@@ -197,7 +197,7 @@ export default {
               index: '/activity/registration'
             },
             {
-              title: '我发起的',
+              title: '我的活动',
               index: '/activity/myActivity'
             },
             {

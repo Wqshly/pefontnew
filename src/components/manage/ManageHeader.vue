@@ -74,14 +74,13 @@ export default {
     },
     // 退出登录
     logout () {
+      sessionStorage.removeItem('userInfo')
       this.$api.http.get('/login/logout')
-        .then(res => {
-          sessionStorage.removeItem('userInfo')
-          this.$router.push('/login')
+        .catch(err => {
+          this.$message.error('您已退出登录！请勿重复操作！')
+          console.log(err)
         })
-        .catch(res => {
-          console.log('退出失败')
-        })
+      this.$router.push('/login')
     }
   },
   mounted () {

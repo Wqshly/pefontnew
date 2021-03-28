@@ -9,6 +9,7 @@
                         @click-row="clickRow"
                         @add-record="addRecord"
                         @edit-record="editRecord"
+                        @download-template="downloadTemplate"
                         @upload-excel="uploadExcelMethod"
                         @data-format="dataFormat">
         <el-form slot="addForm" :model="addForm" style="overflow: auto" label-width="120px" ref="addForm" :rules="addFormRules">
@@ -373,6 +374,8 @@ export default {
     // 删除文件
     async handleRemove (file, fileList) {
       this.fileList = []
+    },
+    downloadTemplate () {
     },
     // 上传Excel方法
     uploadExcelMethod () {

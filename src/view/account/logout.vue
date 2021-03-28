@@ -8,12 +8,9 @@ export default {
   name: 'logout',
   methods: {
     logout () {
+      sessionStorage.removeItem('userInfo')
       this.$api.http.get('/login/logout')
-        .then(res => {
-          sessionStorage.removeItem('userInfo')
-        })
         .catch(err => {
-          this.$router.push.go(-1)
           this.$message.error('您已退出登录！请勿重复操作！')
           console.log(err)
         })

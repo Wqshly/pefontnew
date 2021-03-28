@@ -1,6 +1,10 @@
 <template>
   <div class="container">
     <div style="margin-top: 20px;">
+      <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+        <el-tab-pane label="我发起的" name="first">我发起的</el-tab-pane>
+        <el-tab-pane label="我参与的" name="second">我参与的</el-tab-pane>
+      </el-tabs>
       <!-- 表前工具栏 -->
       <div v-show="!detailDialogVisible">
         <div class="table-tools-column">
@@ -97,6 +101,7 @@ export default {
   name: 'myActivity',
   data () {
     return {
+      activeName: 'first',
       url: {
         refreshUrl: '/activity/getActivityByOrganizers',
         searchUrl: ''
@@ -122,6 +127,7 @@ export default {
     }
   },
   methods: {
+    handleClick () {},
     // 返回
     goBack () {
       this.detailDialogVisible = false

@@ -7,10 +7,10 @@
                         :title-show="false"
                         :table-header-list="tableHeaderList"
                         :search-list="tableHeaderList"
-                        :button-show="buttonShow"
                         @click-row="clickRow"
                         @add-record="addRecord"
                         @edit-record="editRecord"
+                        @download-template="downloadTemplate"
                         @upload-excel="uploadExcelMethod">
         <el-form slot="addForm" :model="addForm" style="overflow: auto" label-width="140px" ref="addForm" :rules="addFormRules">
           <el-form-item label="学院编号：" prop="collegeNumber">
@@ -65,14 +65,6 @@ export default {
         {value: 'score', label: '达标所需积分', width: '140'},
         {value: 'collegeInfo', label: '学院信息', minWidth: '220'}
       ],
-      buttonShow: {
-        addButton: true,
-        editButton: true,
-        deleteButton: true,
-        refreshButton: true,
-        downloadButton: false,
-        uploadButton: false
-      },
       addForm: {collegeNumber: '', collegeName: '', collegeInfo: '', score: ''}, // 新增
       editForm: {collegeNumber: null, collegeName: null, collegeInfo: null, score: null}, // 编辑
       addFormRules: {
@@ -165,6 +157,29 @@ export default {
     // 删除文件
     async handleRemove (file, fileList) {
       this.fileList = []
+    },
+    // 下载模板
+    downloadTemplate () {
+      // window.open('http://182.92.105.34:8080/xiaoyuanpe/download/downloadExcelModel/1')
+      // window.open('http://182.92.105.34:8080/xiaoyuanpe/download/downloadExcelModel/2')
+      // window.open('http://182.92.105.34:8080/xiaoyuanpe/download/downloadExcelModel/3')
+      window.open('http://182.92.105.34:8080/xiaoyuanpe/download/downloadExcelModel/4')
+      // this.$api.http.get('/download/downloadExcelModel/2')
+    },
+    // 创建模板下载链接
+    downloads (data, name) {
+      if (!data) {
+        return
+      }
+      let url = window.URL.createObjectURL(new Blob([data]))
+      let link = document.createElement('a')
+      link.style.display = 'none'
+      link.href = url
+      link.setAttribute('download', `前端拼接后端返回的名字${name}.xlsx`)
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(url)
     },
     // 上传Excel方法
     uploadExcelMethod () {

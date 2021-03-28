@@ -188,8 +188,8 @@ export default {
   },
   mounted () {
     this.$refs[this.refName].getRecord(this.url.refreshUrl)
-    this.getCollege()
-    this.getClass('')
+    // this.getCollege()
+    // this.getClass('')
   }
 }
 </script>
